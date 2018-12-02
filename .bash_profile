@@ -46,3 +46,10 @@ complete -W "NSGlobalDomain" defaults;
 
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
+
+# cf 2018-08-07 load rbenv
+eval "$(rbenv init -)"
+
+# cf 2018-08-20 load python3 by default
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
