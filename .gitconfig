@@ -3,3 +3,6 @@
 	email = infuerno@fastmail.fm
 [core]
 	autocrlf = input
+	pager = less -F -X
+[color]
+	ui = true

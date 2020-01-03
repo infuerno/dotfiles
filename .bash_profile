@@ -53,3 +53,24 @@ eval "$(rbenv init -)"
 # cf 2018-08-20 load python3 by default
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
+# CF 2018-12-09 configure nvm
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+
+# cf 2019-01-07 configure virtualenvwrapper
+source /usr/local/bin/virtualenvwrapper.sh
+
+# pip should only run if there is a virtualenv currently activated
+export PIP_REQUIRE_VIRTUALENV=true
+
+# create commands to override pip restriction.
+# use `gpip` or `gpip3` to force installation of
+# a package in the global python environment
+gpip(){
+   PIP_REQUIRE_VIRTUALENV="" pip "$@"
+}
+
+# cf 2019-07-11 Ensure terraform downloads binaries outside of git / dropbox etc
+export TF_DATA_DIR="$HOME/.terraform"
+
+

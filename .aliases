@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
@@ -14,6 +14,7 @@ alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd ~/Dropbox/Projects"
 alias j="cd ~/Dropbox/Projects/Jekyll"
+alias pp="cd ~/Projects"
 alias g="git"
 
 # Detect which `ls` flavor is in use
@@ -151,3 +152,7 @@ alias reload="exec ${SHELL} -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+# iCloud folder
+alias ic='~/Library/Mobile Documents/com~apple~CloudDocs'
+

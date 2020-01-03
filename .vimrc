@@ -1,6 +1,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+syntax on
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -28,6 +30,9 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 
 Bundle 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'zhou13/vim-easyescape'
+Bundle 'Valloric/YouCompleteMe'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -54,6 +59,7 @@ set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
 set term=xterm-256color
 set termencoding=utf-8
+set number
 
 if has("gui_running")
    let s:uname = system("uname")
@@ -61,3 +67,43 @@ if has("gui_running")
       set guifont=Inconsolata\ for\ Powerline:h15
    endif
 endif
+
+" Remap esc to kj or jk using plugin - see https://github.com/zhou13/vim-easyescape/
+let g:easyescape_chars = { "j": 1, "k": 1 }
+let g:easyescape_timeout = 100
+cnoremap jk <ESC>
+cnoremap kj <ESC>
+
+" Sort out delete key not working
+set backspace=indent,eol,start
+
+" Taken from https://realpython.com/vim-and-python-a-match-made-in-heaven/
+" Move between split panes
+" split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
+" Enable folding with the spacebar
+nnoremap <space> za
+
+" Add the proper PEP 8 indentation
+au BufNewFile,BufRead *.py
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
+    \ set textwidth=79
+    \ set expandtab
+    \ set autoindent
+    \ set fileformat=unix
+
+" Add different options for other source code files
+au BufNewFile,BufRead *.js, *.html, *.css
+    \ set tabstop=2
+    \ set softtabstop=2
+    \ set shiftwidth=2
